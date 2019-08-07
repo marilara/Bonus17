@@ -16,27 +16,32 @@ namespace Bonus_17
             cars.Add(new UsedCar("GC", "Chirpus", 2015, 8500, 12345));
             cars.Add(new UsedCar("GC", "Witherell", 2016, 14450, 3500.3));
 
-            foreach (var c in cars)
+            bool repeat = true;
+
+            while (repeat)
             {
-                if (c is UsedCar)
+                int i = 0;
+                foreach (var c in cars)
                 {
-                    ((UsedCar)c).ToString();
+                    i++;
+                    Console.WriteLine(i + ". " + c.ToString());
+                }
+                Console.WriteLine((i + 1) + ". Quit");
+
+                Console.WriteLine();
+                Console.Write("Which car would you like?");
+                int selection = int.Parse(Console.ReadLine());
+
+                if (selection == (cars.Count + 1))
+                {
+                    break;
                 }
                 else
                 {
-                    c.ToString();
+                    selection -= 1;
+                    Console.WriteLine();
+                    Console.WriteLine(cars[selection]);
                 }
-                Console.WriteLine(c);
-            }
-
-            while (true)
-            {
-                Console.WriteLine();
-                Console.Write("Which car would you like?");
-                int selection = int.Parse(Console.ReadLine()) - 1;
-
-                Console.WriteLine();
-                Console.WriteLine(cars[selection]);
 
                 Console.WriteLine();
                 Console.Write("Would you like to buy this car? (Y/N)");
@@ -49,23 +54,8 @@ namespace Bonus_17
                 }
                 else
                 {
-                    break;
+                    repeat = false;
                 }
-
-                Console.WriteLine();
-                foreach (var c in cars)
-                {
-                    if (c is UsedCar)
-                    {
-                        ((UsedCar)c).ToString();
-                    }
-                    else
-                    {
-                        c.ToString();
-                    }
-                    Console.WriteLine(c);
-                }
-                break;
             }
             Console.WriteLine("Have a great day!");
         }

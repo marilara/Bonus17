@@ -9,11 +9,6 @@ namespace Bonus_17
     {
         protected double mileage;
 
-        public UsedCar()
-        {
-
-        }
-
         public double Mileage { get { return mileage; } }
 
         public UsedCar(string make, string model, int year, double price, double mileage) : base (model, make, year, price)
